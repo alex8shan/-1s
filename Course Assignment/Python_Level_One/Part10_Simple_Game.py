@@ -25,10 +25,16 @@
 import random
 digits = list(range(10))
 random.shuffle(digits)
-print(digits[:3])
+digits = digits[:3]
+print(digits)
 
 # Another hint:
-guess = input("What is your guess? ")
+guess = list("234")
+
+for i in guess:
+    if i in set(digits):
+        print("close")
+
 print(guess)
 
 # Think about how you will compare the input to the random number, what format

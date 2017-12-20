@@ -40,6 +40,13 @@ class Deck:
     have a method for splitting/cutting the deck in half and Shuffling the deck.
     """
     pass
+    def __init__ (self):
+        for i in SUITE:
+            for j in RANKS:
+                
+
+    def split (self):
+
 
 class Hand:
     '''
