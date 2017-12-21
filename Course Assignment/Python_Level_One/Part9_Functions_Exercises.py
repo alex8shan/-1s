@@ -21,7 +21,7 @@
 # arrayCheck([1, 1, 2, 1, 2, 3]) → True
 
 def arrayCheck(nums):
-    # CODE GOES HERE
+  # CODE GOES HERE
 
 
 #####################
@@ -99,6 +99,7 @@ def doubleChar(str):
 
 def no_teen_sum(a, b, c):
   # CODE GOES HERE
+  return a + b + c
 def fix_teen(n):
   # CODE GOES HERE
 
