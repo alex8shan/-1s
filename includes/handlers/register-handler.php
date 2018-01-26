@@ -1,5 +1,6 @@
 <?php
 
+
 function sanitizeFormUsername($inputText) {
     $firstname = strip_tags($inputText);
     $firstname = str_replace(" ","",$inputText);
@@ -18,7 +19,6 @@ function sanitizeFormString($inputText) {
     return $inputText;
 }
 
-
 if(isset($_POST['registerButton'])) {
     //register button is pressed
     $username = sanitizeFormUsername($_POST['username']);
@@ -27,6 +27,8 @@ if(isset($_POST['registerButton'])) {
     $email = sanitizeFormString($_POST['email']);
     $password = sanitizeFormPassword($_POST['password']);
     $password2 = sanitizeFormPassword($_POST['password']);
+
+    $account = new Account();
 }
 
 ?>

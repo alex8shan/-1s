@@ -1,42 +1,15 @@
 <?php
+    include("includes/classes/Account.php");
 
-function sanitizeFormUsername($inputText) {
-    $firstname = strip_tags($inputText);
-    $firstname = str_replace(" ","",$inputText);
-    return $inputText;
-}
-
-function sanitizeFormPassword($inputText) {
-    $firstname = strip_tags($inputText);
-    return $inputText;
-}
-
-function sanitizeFormString($inputText) {
-    $firstname = strip_tags($inputText);
-    $firstname = str_replace(" ","",$inputText);
-    $firstname = ucfirst(strtolower($firstname));
-    return $inputText;
-}
-
-
-if(isset($_POST['loginButton'])) {
-    //login button is pressed
-}
-
-if(isset($_POST['registerButton'])) {
-    //register button is pressed
-    $username = sanitizeFormUsername($_POST['username']);
-    $firstName = sanitizeFormString($_POST['firstName']);
-    $lastName = sanitizeFormString($_POST['lastName']);
-    $email = sanitizeFormString($_POST['email']);
-    $password = sanitizeFormPassword($_POST['password']);
-    $password2 = sanitizeFormPassword($_POST['password']);
-}
-
+    $account = new Account();
+    $account -> register();
+    
+    include("includes/handlers/register-handler.php");
+    include("includes/handlers/login-handler.php");
 ?>
 
-<html>
 
+<html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
