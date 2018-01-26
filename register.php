@@ -2,7 +2,6 @@
     include("includes/classes/Account.php");
 
     $account = new Account();
-    $account -> register();
     
     include("includes/handlers/register-handler.php");
     include("includes/handlers/login-handler.php");
@@ -42,18 +41,19 @@
         <form id="registerForm" action="register.php" method="POST">
             <h2>Create your free account</h2>
             <p>
-                <Label for "userName">Username</Label>
-                <input id="userName" name="username" type="text" placeholder="e.g. firefly" required>
+                <?php echo $account->getError("Your username must be between 5 and 25 characters"); ?>
+                <Label for "username">Username</Label>
+                <input id="username" name="username" type="text" placeholder="e.g. firefly" required>
             </p>
 
             <p>
                 <Label for "firstName">First Name</Label>
-                <input id="firstName" name="firstname" type="text" placeholder="e.g. Xuan" required>
+                <input id="firstName" name="firstName" type="text" placeholder="e.g. Xuan" required>
             </p>
 
             <p>
                 <Label for "lastName">Last Name</Label>
-                <input id="lastName" name="lastname" type="text" placeholder="e.g. Zhang" required>
+                <input id="lastName" name="lastName" type="text" placeholder="e.g. Zhang" required>
             </p>
 
             <p>
@@ -63,12 +63,12 @@
 
             <p>
                 <Label for "password">Password</Label>
-                <input id="password" name="password" type="password" placeholder="Your Password" required>
+                <input id="password" name="password" type="password" placeholder="Your password" required>
             </p>
 
             <p>
                 <Label for "password2">Confirm Password</Label>
-                <input id="password2" name="password2" type="password" placeholder="Your Password" required>
+                <input id="password2" name="password2" type="password" placeholder="Enter password again" required>
             </p>
 
             <button type="submit" name="registerButton">SIGN UP</button>
