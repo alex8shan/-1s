@@ -47,26 +47,32 @@
             </p>
 
             <p>
+                <?php echo $account->getError("Your first name must be between 2 and 25 characters"); ?>
                 <Label for "firstName">First Name</Label>
                 <input id="firstName" name="firstName" type="text" placeholder="e.g. Xuan" required>
             </p>
 
             <p>
+                <?php echo $account->getError("Your last name must be between 2 and 25 characters"); ?>
                 <Label for "lastName">Last Name</Label>
                 <input id="lastName" name="lastName" type="text" placeholder="e.g. Zhang" required>
             </p>
 
             <p>
+                <?php echo $account->getError("Email format is invalid"); ?>
                 <Label for "email">Email</Label>
                 <input id="email" name="email" type="email" placeholder="e.g. example@email.com" required>
             </p>
 
             <p>
+                <?php echo $account->getError("Your password must be between 5 and 30 characters"); ?>
                 <Label for "password">Password</Label>
                 <input id="password" name="password" type="password" placeholder="Your password" required>
             </p>
 
             <p>
+                <?php echo $account->getError("Your password must be between 5 and 30 characters"); ?>
+                <?php echo $account->getError("Password don't match"); ?>
                 <Label for "password2">Confirm Password</Label>
                 <input id="password2" name="password2" type="password" placeholder="Enter password again" required>
             </p>

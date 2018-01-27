@@ -95,7 +95,7 @@
         function validateEmail($email) {
             //manually checks .com suffix
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                array_push($this->errorArray, "Email is invalid");
+                array_push($this->errorArray, "Email format is invalid");
                 return;
             }
             //TODO: Check if username has been used
@@ -109,14 +109,14 @@
          */
         function validatePassword($password, $password2) {
             if($password != $password2) {
-                array_push($this->errorArray, "Password does not match");
+                array_push($this->errorArray, "Password don't match");
                 return;
             }
 
             //Optional: check the password's format using preg_match
 
             if(strlen($password) > 30 || strlen($password) < 5) {
-                array_push($this->errorArray, "Your first name must be between 5 and 30 characters");
+                array_push($this->errorArray, "Your password must be between 5 and 30 characters");
                 return;
             }
         }
