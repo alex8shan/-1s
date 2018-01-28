@@ -20,10 +20,10 @@
          */
         public function register($username, $firstName, $lastName, $email, $password, $password2) {
             $this -> validateUsername($username);
-            $this -> validateUsername($firstName);
-            $this -> validateUsername($lastName);
-            $this -> validateUsername($email);
-            $this -> validateUsername($password, $password2);
+            $this -> validateFirstname($firstName);
+            $this -> validateLastname($lastName);
+            $this -> validateEmail($email);
+            $this -> validatePassword($password, $password2);
 
             if(empty($this->errorArray)) {
                 //Insert into DB
@@ -53,8 +53,8 @@
          * @return void
          */
         function validateUsername($username) {
-            if(strlen($username) > 25 || strlen($username) < 5) {
-                array_push($this->errorArray, "Your username must be between 5 and 25 characters");
+            if(strlen($username) > 25 || strlen($username) < 4) {
+                array_push($this->errorArray, Constants::$usernameCharacters);
                 return;
             }
 
@@ -69,7 +69,7 @@
          */
         function validateFirstname($firstName) {
             if(strlen($firstName) > 25 || strlen($firstName) < 2) {
-                array_push($this->errorArray, "Your first name must be between 2 and 25 characters");
+                array_push($this->errorArray, Constants::$firstNameCharacters);
                 return;
             }
         }
@@ -82,7 +82,7 @@
          */
         function validateLastname($lastName) {
             if(strlen($lastName) > 25 || strlen($lastName) < 2) {
-                array_push($this->errorArray, "Your last name must be between 2 and 25 characters");
+                array_push($this->errorArray, Constants::$lastNameCharacters);
                 return;
             }
         }
@@ -95,7 +95,7 @@
         function validateEmail($email) {
             //manually checks .com suffix
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                array_push($this->errorArray, "Email format is invalid");
+                array_push($this->errorArray, Constants::$emailInvalid);
                 return;
             }
             //TODO: Check if username has been used
@@ -109,14 +109,14 @@
          */
         function validatePassword($password, $password2) {
             if($password != $password2) {
-                array_push($this->errorArray, "Password don't match");
+                array_push($this->errorArray, Constants::$passwordNotMatch);
                 return;
             }
 
             //Optional: check the password's format using preg_match
 
             if(strlen($password) > 30 || strlen($password) < 5) {
-                array_push($this->errorArray, "Your password must be between 5 and 30 characters");
+                array_push($this->errorArray, Constants::$passwordCharacters);
                 return;
             }
         }

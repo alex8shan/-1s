@@ -1,26 +1,49 @@
 <?php
-
-
+/**
+ * Cleans the format for username
+ *
+ * @param [String] $inputText
+ * @return void
+ */
 function sanitizeFormUsername($inputText) {
+    //ignore the HTML tags.
     $inputText = strip_tags($inputText);
+    //ignore the spaces in the string
     $inputText = str_replace(" ","",$inputText);
     return $inputText;
 }
 
-function sanitizeFormPassword($inputText) {
-    $inputText = strip_tags($inputText);
-    return $inputText;
-}
-
+/**
+ * Cleans the format for string
+ *
+ * @param [String] $inputText
+ * @return void
+ */
 function sanitizeFormString($inputText) {
+    //ignore the HTML tags.
     $inputText = strip_tags($inputText);
+    //ignore the spaces in the string
     $inputText = str_replace(" ","",$inputText);
+    //set string to all lowercase except the first character
     $inputText = ucfirst(strtolower($inputText));
     return $inputText;
 }
+
+/**
+ * Cleans the format for password
+ *
+ * @param [String] $inputText
+ * @return void
+ */
+function sanitizeFormPassword($inputText) {
+    //ignore the HTML tags.
+    $inputText = strip_tags($inputText);
+    return $inputText;
+}
+
 // When register button is pressed
 if(isset($_POST['registerButton'])) {
-    //sanitize all buttons
+    //sanitize all inputs
     $username = sanitizeFormUsername($_POST['username']);
     $firstName = sanitizeFormString($_POST['firstName']);
     $lastName = sanitizeFormString($_POST['lastName']);
