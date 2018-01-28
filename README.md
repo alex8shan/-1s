@@ -1,4 +1,4 @@
-# Spotify_Clone
+# +1 s
 This project uses HTML, CSS, PHP, JQuery, JavaScript and MySQL to build a complete Spotify clone(without ad XD).
 
 Users will be able to: 
