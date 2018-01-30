@@ -1,26 +1,44 @@
 <?php
     include("includes/classes/Account.php");
     include("includes/classes/Constants.php");
-
     $account = new Account();
-    
     include("includes/handlers/register-handler.php");
     include("includes/handlers/login-handler.php");
 ?>
 
 
-    <html>
+<html>
 
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>+1s</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="icon.png" />
-        <link rel="stylesheet" type="text/css" href="assets/css/register.css" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>+1s</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
+    <link rel="stylesheet" type="text/css" href="assets/css/register.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/js/register.js"></script>
+</head>
 
-    <body>
+<body>
+    <?php
+        if(isset($_POST['registerButton'])) {
+            echo '<script>
+                    $(document).ready(function() {
+                    $("#loginForm").hide();
+                    $("#registerForm").show();
+                    })
+                </script>';
+        } else {
+            echo '<script>
+                $(document).ready(function () {
+                    $("#loginForm").show();
+                    $("#registerForm").hide();
+                })
+            </script>';
+        }
+    ?>
+
         <div id="background">
             <div id="loginContainer">
                 <div id="inputContainer">
@@ -37,6 +55,10 @@
                         </p>
 
                         <button type="submit" name="loginButton">LOG IN</button>
+
+                        <div class="hasAccountText">
+                            <span id="hideLogin">Don't have an account yet? Sign up here.</span>
+                        </div>
 
                     </form>
 
@@ -81,11 +103,19 @@
 
                         <button type="submit" name="registerButton">SIGN UP</button>
 
+                        <div class="hasAccountText">
+                            <span id="hideRegister">Already have an account? Log in here.</span>
+                        </div>
+
                     </form>
+                </div>
+
+                <div id="loginText">
+                    <h1>Stay Simple & Stay Naive.</h1>
+                    <h2>Listen to +1s and run faster than Hong Kong journalist!</h2>
                 </div>
             </div>
         </div>
+</body>
 
-    </body>
-
-    </html>
+</html>
