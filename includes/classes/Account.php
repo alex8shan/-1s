@@ -1,16 +1,18 @@
 <?php
     class Account {
 
+        private $con;
         private $errorArray;
 
-        public function __construct() {
+        public function __construct($con) {
+            $this->con = $con;
             $this->errorArray = array();
         }
 
         /**
          * Validate user registration input.
          *
-         * @param [String] $userName
+         * @param [String] $username
          * @param [String] $firstName
          * @param [String] $lastName
          * @param [String] $email
@@ -23,7 +25,8 @@
             $this -> validateFirstname($firstName);
             $this -> validateLastname($lastName);
             $this -> validateEmail($email);
-            $this -> validatePassword($password, $password2);
+            $this -> validatePassword($password);
+            $this -> validatePasswordMatches($password, $password2);
 
             if(empty($this->errorArray)) {
                 //Insert into DB
@@ -44,6 +47,26 @@
                 $error = "";
             }
             return "<span class='errorMessage'>$error</span>";
+        }
+
+        /**
+         * Insert data into database
+         *
+         * @param [type] $username
+         * @param [type] $firstName
+         * @param [type] $lastName
+         * @param [type] $email
+         * @param [type] $password
+         * @return void
+         */
+        private function insertUserDetails($username, $firstName, $lastName, $email, $password) {
+            $encryptedPassword = md5($password);
+            $profilePic = "../../assets/img/profile-pics/head_emerald.jpg";
+            $date = date("Y-m-d");
+
+            $result = mysqli_query($this->con,"INSERT INTO users VALUES('','$username','$firstName','$lastName','$email','$encryptedPassword','$date','$profilePic')");
+
+            return $result;
         }
 
         /**
@@ -107,16 +130,17 @@
          * @param [String] $password2
          * @return void
          */
-        function validatePassword($password, $password2) {
-            if($password != $password2) {
-                array_push($this->errorArray, Constants::$passwordNotMatch);
-                return;
-            }
-
-            //Optional: check the password's format using preg_match
-
+        function validatePassword($password) {
             if(strlen($password) > 30 || strlen($password) < 5) {
                 array_push($this->errorArray, Constants::$passwordCharacters);
+                return;
+            }
+            //Optional: check the password's format using preg_match
+        }
+
+        function validatePasswordMatches($password, $password2) {
+            if($password != $password2) {
+                array_push($this->errorArray, Constants::$passwordNotMatch);
                 return;
             }
         }
