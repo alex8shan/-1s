@@ -68,6 +68,7 @@
             $profilePic = "../../assets/img/profile-pics/head_emerald.jpg";
             $date = date("Y-m-d");
 
+            echo "INSERT INTO users VALUES('','$username','$firstName','$lastName','$email','$encryptedPassword','$date','$profilePic'";
             $result = mysqli_query($this->con,"INSERT INTO users VALUES('','$username','$firstName','$lastName','$email','$encryptedPassword','$date','$profilePic')");
 
             return $result;
@@ -85,7 +86,12 @@
                 return;
             }
 
-            //TODO: Check if username exists
+            $checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$username'");
+            
+            if(mysqli_num_rows($checkUsernameQuery)!=0) {
+                array_push($this->errorArray, Constants::$usernameTaken);
+                return;
+            }
         }
 
         /**
@@ -125,7 +131,13 @@
                 array_push($this->errorArray, Constants::$emailInvalid);
                 return;
             }
-            //TODO: Check if username has been used
+            
+            $checkEmailQuery = mysqli_query($this->con, "SELECT email FROM users WHERE email='$email'");
+            
+            if(mysqli_num_rows($checkEmailQuery)!=0) {
+                array_push($this->errorArray, Constants::$emailTaken);
+                return;
+            }
         }
         /**
          * Validate password

@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>+1s</title>
+    <title>Welcome to +1s!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="assets/img/icon.png" />
     <link rel="stylesheet" type="text/css" href="assets/css/register.css" />
@@ -68,6 +68,7 @@
                         <h2>Create your free account</h2>
                         <p>
                             <?php echo $account->getError(Constants::$usernameCharacters); ?>
+                            <?php echo $account->getError(Constants::$usernameTaken); ?>
                             <Label for "username">Username</Label>
                             <input id="username" name="username" type="text" placeholder="e.g. HASS" required>
                         </p>
@@ -86,6 +87,7 @@
 
                         <p>
                             <?php echo $account->getError(Constants::$emailInvalid); ?>
+                            <?php echo $account->getError(Constants::$emailTaken); ?>
                             <Label for "email">Email</Label>
                             <input id="email" name="email" type="email" placeholder="e.g. Too@simple.com" required>
                         </p>

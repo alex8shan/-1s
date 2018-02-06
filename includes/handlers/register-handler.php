@@ -51,7 +51,7 @@ if(isset($_POST['registerButton'])) {
     $password = sanitizeFormPassword($_POST['password']);
     $password2 = sanitizeFormPassword($_POST['password2']);
     //call the register function in account class.
-    $wasSuccessful = $account -> register($username, $firstName, $lastName, $email, $password, $password2);
+    $wasSuccessful = $account->register($username, $firstName, $lastName, $email, $password, $password2);
     //checks if user input have any errors
     if($wasSuccessful) {
         header("Location: index.php");

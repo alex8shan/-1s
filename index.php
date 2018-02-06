@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Spotify Clone</title>
+    <title>+1s</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="icon.png"/>
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
 <body>
-    <p>This is suppose to be a Spotify clone where users will be able to: </p>
+    <p>This is a Spotify clone where users will be able to: </p>
 
     <ul>
         <li>Sign up</li>
