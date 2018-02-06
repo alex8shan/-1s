@@ -1,4 +1,8 @@
 <?php
+    /**
+     * This class validates the format of the user input regards to account information
+     * and returns possible error.
+     */
     class Account {
 
         private $con;
@@ -18,7 +22,7 @@
          * @param [String] $email
          * @param [String] $password
          * @param [String] $password2
-         * @return bool
+         * @return void
          */
         public function register($username, $firstName, $lastName, $email, $password, $password2) {
             $this -> validateUsername($username);
@@ -30,7 +34,7 @@
 
             if(empty($this->errorArray)) {
                 //Insert into DB
-                return true;
+                return $this->insertUserDetails($username, $firstName, $lastName, $email, $password);
             } else {
                 return false;
             }
@@ -72,7 +76,7 @@
         /**
          * Validate username
          *
-         * @param [String] $userName
+         * @param [String] $username
          * @return void
          */
         function validateUsername($username) {
