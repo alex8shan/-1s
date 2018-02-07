@@ -1,3 +1,16 @@
+<?php
+
+include("includes/config.php");
+
+//temporarily log out
+//session_destroyer();
+
+if(isset($_SESSION['userLoggedIn'])) {
+    $userLoggedIn = $_SESSION['userLoggedIn'];
+} else {
+    header("Location:register.php");
+}
+?>
 
 <html>
 <head>
