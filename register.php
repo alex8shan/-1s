@@ -117,6 +117,9 @@ if (isset($_POST['registerButton'])) {
                 <div id="loginText">
                     <h1>Stay Simple & Stay Naive.</h1>
                     <h2>Listen to +1s and run faster than Hong Kong journalist!</h2>
+                    <h3>Search for all their favorite artists, albums and songs in real time!</h3>
+                    <h3>Create and customize their own playlists</h3>
+                    <h3>Control the music with all the usual controls such as play, pause, skip, previous, shuffle, repeat etc.</h3>
                 </div>
             </div>
         </div>

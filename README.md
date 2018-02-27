@@ -10,7 +10,7 @@ Users will be able to:
 
 Login & Register page:
 
-![Login page](https://preview.ibb.co/hpD4Gw/Selection_007.png)
+![Login page](assets/img/sample/register.png)
 
 Player page(Still under development):
 

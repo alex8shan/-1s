@@ -52,7 +52,6 @@ body {
     width: 400px;
     padding: 3em;
     float: left;
-    border-right: 1px solid #999;
 }
 
 #inputContainer h2 {
@@ -112,6 +111,7 @@ body {
 #loginText {
     padding: 3em;
     display: table-cell;
+    border-left: 1px solid #999;
 }
 
 #loginText h1 {
