@@ -8,6 +8,10 @@ Users will be able to:
 - Create and customize their own playlists
 - Control the music with all the usual controls such as play, pause, skip, previous, shuffle, repeat etc.
 
-Login & Register page
+Login & Register page:
 
 ![Login page](https://preview.ibb.co/hpD4Gw/Selection_007.png)
+
+Player page(Still under development):
+
+![Player Page](assets/img/sample/index.png)
