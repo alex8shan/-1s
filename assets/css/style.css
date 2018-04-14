@@ -1,12 +1,12 @@
 html, body {
-    padding: 0;
-    margin: 0;
-    height: 100%;
+	padding: 0;
+	margin: 0;
+	height: 100%;
 }
 
 * {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #fff;
+	color: #fff;
     letter-spacing: 1px;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 #nowPlayingBarContainer {
-    width: 100%;
+	width: 100%;
     background-color: #282828;
     bottom: 0;
     position: fixed;
@@ -25,7 +25,7 @@ body {
 }
 
 #nowPlayingBar {
-    display: flex;
+	display: flex;
     height: 90px;
     padding: 16px;
     box-sizing: border-box;
@@ -33,28 +33,27 @@ body {
 
 #nowPlayingLeft,
 #nowPlayingRight {
-    width: 30%;
+	width: 30%;
     min-width: 180px;
 }
 
 #nowPlayingRight {
-    position: relative;
+	position: relative;
     margin-top: 16px;
 }
 
 #nowPlayingCenter {
-    width: 40%;
+	width: 40%;
     max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#nowPlayingBar .content{
-    width: 100%;
-    height: 57px;
+#nowPlayingBar .content {
+	width: 100%;
+	height: 57px;
 }
-
 
 .playerControls .buttons {
 	margin: 0 auto;
@@ -117,7 +116,6 @@ body {
 .playbackBar .progressBar {
 	margin-top: 3px;
 }
-
 
 #nowPlayingLeft .albumArtwork {
 	height: 100%;
