@@ -1,5 +1,7 @@
 <?php
-include "includes/config.php";
+include("includes/config.php");
+include("includes/classes/Artist.php");
+include("includes/classes/Album.php");
 
 //if the user is not logged in, direct user to register page
 if (isset($_SESSION['userLoggedIn'])) {
@@ -23,10 +25,13 @@ if (isset($_SESSION['userLoggedIn'])) {
 </head>
 
 <body>
+
     <div id="mainContainer">
     
         <div id="topContainer">
+
             <?php include("includes/navBarContainer.php");?>
 
             <div id="mainViewContainer">
+            
                 <div id="mainContent">
