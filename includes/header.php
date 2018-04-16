@@ -2,6 +2,7 @@
 include("includes/config.php");
 include("includes/classes/Artist.php");
 include("includes/classes/Album.php");
+include("includes/classes/Song.php");
 
 //if the user is not logged in, direct user to register page
 if (isset($_SESSION['userLoggedIn'])) {

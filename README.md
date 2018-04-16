@@ -10,8 +10,12 @@ Users will be able to:
 
 Login & Register page:
 
-![Login page](assets/img/sample/register.png)
+![(deLogin page](assets/img/sample/register.png)
 
-Player page(Still under development):
+You Might Like page (default home page):
 
 ![Player Page](assets/img/sample/index.png)
+
+Album page:
+
+![Player Page](assets/img/sample/album.png)
