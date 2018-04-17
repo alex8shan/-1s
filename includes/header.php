@@ -22,7 +22,7 @@ if (isset($_SESSION['userLoggedIn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="assets/img/icon.png" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <script src="main.js"></script>
+    <script src="assets/js/script.js"></script>
 </head>
 
 <body>
