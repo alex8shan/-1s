@@ -13,6 +13,10 @@
             $this->song = mysqli_fetch_array($songQuery);
         }
 
+        public function getId() {
+            return $this->id;
+        }
+
         public function getTitle() {
             return $this->song['title'];
         }

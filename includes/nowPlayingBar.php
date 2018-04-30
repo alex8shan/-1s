@@ -16,11 +16,11 @@ $jsonArray = json_encode($resultArray);
 <script>
 
 $(document).ready(function() {
-	currentPlaylist = <?php echo $jsonArray; ?>;
+	var newPlaylist = <?php echo $jsonArray; ?>;
 	//create the audio object for the HTML player
 	audioElement = new Audio();
 
-	setTrack(currentPlaylist[0], currentPlaylist, false);
+	setTrack(newPlaylist[0], newPlaylist, false);
 	updateVolumeProgressBar(audioElement.audio);
 
 	$("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
@@ -107,7 +107,7 @@ function nextSong() {
 		currentIndex++;
 	}
 
-	var trackToPlay = currentPlaylist[currentIndex];
+	var trackToPlay = shuffle ? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
 	setTrack(trackToPlay, currentPlaylist, true);
 }
 /**
@@ -125,6 +125,28 @@ function setShuffle() {
 	shuffle = !shuffle;
 	var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
 	$(".controlButton.shuffle img").attr("src", "assets/img/icons/" + imageName);
+
+	if(shuffle == true) {
+		//Randomlist playlist
+		shuffleArray(shufflePlaylist);
+		currentPlaylist = shufflePlaylist.indexOf(audioElement.currentPlaying.id);
+	} else {
+		//back to regular playlist
+		currentPlaylist = currentPlaylists.indexOf(audioElement.currentPlaying.id);
+	}
+}
+/**
+ * Used for shuffle playlist array
+ */
+function shuffleArray(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
 }
 /**
  * Mute the song
@@ -139,7 +161,17 @@ function setMute() {
  */
 function setTrack(trackId, newPlaylist, play) {
 
-	currentIndex = currentPlaylist.indexOf(trackId);
+	if(newPlaylist != currentPlaylist) {
+		currentPlaylist = newPlaylist;
+		shufflePlaylist = currentPlaylist.slice();
+		shuffleArray(shufflePlaylist)
+	}
+
+	if(shuffle == true) {
+		currentIndex = shufflePlaylist.indexOf(trackId);
+	} else {
+		currentIndex = currentPlaylist.indexOf(trackId);
+	}
 	pauseSong();
 
 	$.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
