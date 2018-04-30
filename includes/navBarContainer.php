@@ -19,14 +19,6 @@
             <div class="navItem">
                 <a href="browse.php" class="navItemLink">Browse</a>
             </div>
-
-            <div class="navItem">
-                <a href="yourMusic.php" class="navItemLink">Your Music</a>
-            </div>
-
-            <div class="navItem">
-                <a href="profile.php" class="navItemLink">Zhang Zhe</a>
-            </div>
         </div>
 
 

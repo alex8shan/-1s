@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1>Final milestone</h1>
+        <h3>PHP function:</h3>
+        It is clear that PHP is the backbone of this project. It is being used to display pages, log users in and interact with database.
+        
+        <h3>Database:</h3>
+        In database, there are 5 tables being created for this project: 
+        <ul>
+            <li>Album: This table is used to display album info of the song, includes: album ID(auto increment, primary), album title, artist, genre and artworkPath.</li>
+            <li>Artist:This table is used to display artist info of the song, includes: artist ID(auto increment, primary) and artist name.</li>
+            <li>Genre: This table is used to display genre info of the song, includes: genre ID(auto increment, primary) and genrename.</li>
+            <li>Song: This table is used to display song info, includes: song ID(auto increment, primary), song title, artist, genre, song duration, musicPath, albumOrder and number of plays.</li>
+            <li>User: This is the only table that is not associated with songs. It includes user ID(auto increment, primary), firstName, lastName, email, password, signupDate and profilePic </li>
+        </ul>
+        Song informatinos are pre-programmed inside of database so the user cannot change it. However they can change the user table by signing up.
+        <h3>JavaScript:</h3>
+        Responsible for playing music audios, including previous/next song, pause/play and looping.<br>
+        The way to do it is to create <a href="http://ice.truman.edu/~ms1723/-1s/assets/js/script.js">script.js</a> that uses audio object to do basic music playing functions.<br>
+        Inside nowPlayingBar.php, we use <a href="http://ice.truman.edu/~ms1723/-1s/assets/js/script.js">script.js</a> to implement the UI(for example showing play/pause), as well as 
+        using Jquery(Ajax) to accomplish fetching song from database.<br>
+        <a href="http://ice.truman.edu/~ms1723/ms3/assets/js/register.js">register.js</a> is responsible for showing/hiding sign in / register option in <a href="http://ice.truman.edu/~ms1723/-1s/register.phps">register.phps</a>.
+        <br>
+
+        <h3>Things to be done:</h3>
+        If we had more time, we would like to do the following things that is in our plan:
+        <ul>
+            <li>Create playlist for each user, where they can add/ delete songs they wish to play.</li>
+            <li>Find a way for changing pages not to affect playing songs.</li>
+        </ul>
+    </body>
+</html>
