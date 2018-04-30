@@ -17,10 +17,11 @@ $jsonArray = json_encode($resultArray);
 $(document).ready(function() {
 	currentPlaylist = <?php echo $jsonArray; ?>;
 	console.log(currentPlaylist);
+	//create the audio object for the HTML player
 	audioElement = new Audio();
+
 	setTrack(currentPlaylist[0], currentPlaylist, false);
 	updateVolumeProgressBar(audioElement.audio);
-
 
 	$("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
 		e.preventDefault();
@@ -86,7 +87,9 @@ function prevSong() {
 		setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
 	}
 }
-
+/**
+ * Switch to the next song of playlist
+ */
 function nextSong() {
 	if(currentIndex == currentPlaylist.length - 1) {
 		currentIndex = 0;
@@ -98,36 +101,40 @@ function nextSong() {
 	var trackToPlay = currentPlaylist[currentIndex];
 	setTrack(trackToPlay, currentPlaylist, true);
 }
-
+/**
+ * Fetch the song info from the database via Ajax and display in the playing bar
+ */
 function setTrack(trackId, newPlaylist, play) {
 
-$.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+	$.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
 
-	currentIndex = currentPlaylist.indexOf(trackId);
+		currentIndex = currentPlaylist.indexOf(trackId);
 
-	var track = JSON.parse(data);
-	$(".trackName span").text(track.title);
+		var track = JSON.parse(data);
+		$(".trackName span").text(track.title);
 
-	$.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) {
-		var artist = JSON.parse(data);
-		$(".artistName span").text(artist.name);
+		$.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) {
+			var artist = JSON.parse(data);
+			$(".artistName span").text(artist.name);
+		});
+
+		$.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) {
+			var album = JSON.parse(data);
+			$(".albumLink img").attr("src", album.artworkPath);
+		});
+
+
+		audioElement.setTrack(track);
+
 	});
 
-	$.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) {
-		var album = JSON.parse(data);
-		$(".albumLink img").attr("src", album.artworkPath);
-	});
-
-
-	audioElement.setTrack(track);
-	playSong();
-});
-
-if(play == true) {
-	audioElement.play();
+	if(play == true) {
+		playSong();
+	}
 }
-}
-
+/**
+ * Play the song and update the play counter via Ajax.
+ **/
 function playSong() {
 
 	if(audioElement.audio.currentTime == 0) {
@@ -138,7 +145,9 @@ function playSong() {
 	$(".controlButton.pause").show();
 	audioElement.play();
 }
-
+/**
+ * Pause the song
+ */
 function pauseSong() {
 	$(".controlButton.play").show();
 	$(".controlButton.pause").hide();
