@@ -17,7 +17,7 @@
 
         <div class="group">
             <div class="navItem">
-                <a href="browse.php" class="navItemLink">Browse</a>
+                <a href="album.php" class="navItemLink">Browse</a>
             </div>
         </div>
 

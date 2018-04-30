@@ -1,4 +1,5 @@
 <?php
+//get at most 10 songs in random order from database
 $songQuery = mysqli_query($con, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
 
 $resultArray = array();
@@ -16,7 +17,6 @@ $jsonArray = json_encode($resultArray);
 
 $(document).ready(function() {
 	currentPlaylist = <?php echo $jsonArray; ?>;
-	console.log(currentPlaylist);
 	//create the audio object for the HTML player
 	audioElement = new Audio();
 
@@ -77,7 +77,9 @@ function timeFromOffset(mouse, progressBar) {
 	var seconds = audioElement.audio.duration * (percentage / 100);
 	audioElement.setTime(seconds);
 }
-
+/**
+ * Switch to the previous song of playlist
+ */
 function prevSong() {
 	if(audioElement.audio.currentTime >= 3 || currentIndex == 0) {
 		audioElement.setTime(0);
@@ -91,6 +93,13 @@ function prevSong() {
  * Switch to the next song of playlist
  */
 function nextSong() {
+	//repeat mode
+	if(repeat == true) {
+		audioElement.setTime(0);
+		playSong();
+		return null;
+	}
+
 	if(currentIndex == currentPlaylist.length - 1) {
 		currentIndex = 0;
 	}
@@ -102,13 +111,38 @@ function nextSong() {
 	setTrack(trackToPlay, currentPlaylist, true);
 }
 /**
+ * Change the repeat status and repeat button
+ */
+function setRepeat() {
+	repeat = !repeat;
+	var imageName = repeat ? "repeat-active.png" : "repeat.png";
+	$(".controlButton.repeat img").attr("src", "assets/img/icons/" + imageName);
+}
+/**
+ * Change the shuffle status and shuffle button
+ */
+function setShuffle() {
+	shuffle = !shuffle;
+	var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
+	$(".controlButton.shuffle img").attr("src", "assets/img/icons/" + imageName);
+}
+/**
+ * Mute the song
+ */
+function setMute() {
+	audioElement.audio.muted = !audioElement.audio.muted;
+	var imageName = audioElement.audio.muted ? "volume-mute.png" : "volume.png";
+	$(".controlButton.volume img").attr("src", "assets/img/icons/" + imageName);
+}
+/**
  * Fetch the song info from the database via Ajax and display in the playing bar
  */
 function setTrack(trackId, newPlaylist, play) {
 
-	$.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
+	currentIndex = currentPlaylist.indexOf(trackId);
+	pauseSong();
 
-		currentIndex = currentPlaylist.indexOf(trackId);
+	$.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
 
 		var track = JSON.parse(data);
 		$(".trackName span").text(track.title);
@@ -125,6 +159,7 @@ function setTrack(trackId, newPlaylist, play) {
 
 
 		audioElement.setTrack(track);
+		playSong();
 
 	});
 
@@ -160,18 +195,17 @@ function pauseSong() {
         <div id="nowPlayingLeft">
             <div class="content">
                 <span class="albumLink">
-                    <img src="assets/img/album.jpg" class="albumArtwork">
+                    <img src="" class="albumArtwork">
                 </span>
 
                 <div class="trackInfo">
-                    <span class="trackName">
-                        <span>HAHA Style
-                            <span>
-                            </span>
+					<span class="trackName">
+						<span></span>
+					</span>
 
-                            <span class="artistName">
-                                <span>Zhang Zhe</span>
-                            </span>
+					<span class="artistName">
+						<span></span>
+					</span>
                 </div>
             </div>
         </div>
@@ -182,11 +216,11 @@ function pauseSong() {
 
                 <div class="buttons">
 
-                    <button class="controlButton shuffle" title="Shuffle button">
+                    <button class="controlButton shuffle" title="Shuffle button" onclick="setShuffle()">
                         <img src="assets/img/icons/shuffle.png" alt="Shuffle">
                     </button>
 
-                    <button class="controlButton previous" title="Previous button"  onclick="prevSong()">
+                    <button class="controlButton previous" title="Previous button" onclick="prevSong()">
                         <img src="assets/img/icons/previous.png" alt="Previous">
                     </button>
 
@@ -203,7 +237,7 @@ function pauseSong() {
                     </button>
 
                     <button class="controlButton repeat" title="Repeat button">
-                        <img src="assets/img/icons/repeat.png" alt="Repeat">
+                        <img src="assets/img/icons/repeat.png" alt="Repeat" onclick="setRepeat()">
                     </button>
 
                 </div>
@@ -233,7 +267,7 @@ function pauseSong() {
         <div id="nowPlayingRight">
             <div class="volumeBar">
 
-                <button class="controlButton volume" title="Volume button">
+                <button class="controlButton volume" title="Volume button" onclick="setMute()">
                     <img src="assets/img/icons/volume.png" alt="Volume">
                 </button>
 
