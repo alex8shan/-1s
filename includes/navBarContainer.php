@@ -1,9 +1,9 @@
 <div id="navBarContainer">
     <nav class="navBar">
 
-        <a href="index.php" class="logo">
+        <span class="logo" onclick="openPage('index.php')">
             <img src="assets/img/icons/logo.png">
-        </a>
+        </span> 
         
         <div class="group">
 
@@ -17,7 +17,7 @@
 
         <div class="group">
             <div class="navItem">
-                <a href="album.php" class="navItemLink">Browse</a>
+            <span role="link" tabindex="0" onclick="openPage('browse.php')" class="navItemLink">Browse</span>
             </div>
         </div>
 

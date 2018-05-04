@@ -191,13 +191,13 @@ function setTrack(trackId, newPlaylist, play) {
 
 
 		audioElement.setTrack(track);
-		playSong();
-
+		// playSong();
+		if(play == true) {
+			playSong();
+		}
 	});
 
-	if(play == true) {
-		playSong();
-	}
+	
 }
 /**
  * Play the song and update the play counter via Ajax.

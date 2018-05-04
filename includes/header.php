@@ -7,6 +7,7 @@ include("includes/classes/Song.php");
 //if the user is not logged in, direct user to register page
 if (isset($_SESSION['userLoggedIn'])) {
     $userLoggedIn = $_SESSION['userLoggedIn'];
+    echo "<script>userLoggedIn = '$userLoggedIn';</script>";
 } else {
     header("Location:register.php");
 }
