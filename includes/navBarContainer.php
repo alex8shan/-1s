@@ -5,7 +5,7 @@
             <img src="assets/img/icons/logo.png">
         </span> 
         
-        <div class="group">
+        <!-- <div class="group">
 
             <div class="navItem">
                 <a href="search.php" class="navItemLink">Search
@@ -13,7 +13,7 @@
                 </a>
             </div>
 
-        </div>
+        </div> -->
 
         <div class="group">
             <div class="navItem">
