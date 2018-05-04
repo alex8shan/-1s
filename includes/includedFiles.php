@@ -1,5 +1,6 @@
 <?php
-// Determines if the user clicked the button manually or via ajax
+// Determines if the user typed url manually or via ajax. If the url is triggered via ajax the 
+//header and footer will not be loaded, only the mainContent
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
     include("config.php");
     include("classes/Artist.php");
