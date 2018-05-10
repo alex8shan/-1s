@@ -9,8 +9,17 @@ include("includes/includedFiles.php");
 	<?php
 
 		//randomly displaying album info
-		$albumQuery = mysqli_query($con, "SELECT * FROM albums ORDER BY RAND() LIMIT 5");
+		//use prepare + execute to prevent SQL injection
+		//$albumQuery = $db->prepare("SELECT * FROM albums ORDER BY RAND() LIMIT 5")
 
+		$albumQuery = mysqli_query($con, "SELECT * FROM albums ORDER BY RAND() LIMIT 5");
+		//try {
+		
+		
+		// $sql = "SELECT id, title, artworkPath FROM albums ORDER BY RAND() LIMIT 5";
+		// $stmt = $db->prepare($sql);
+		// $stmt->execute();
+		// while($row = $stmt->Fetch(PDO::FETCH_ASSOC)) {
 		while($row = mysqli_fetch_array($albumQuery)) {
 
             echo "<div class='gridViewItem'>

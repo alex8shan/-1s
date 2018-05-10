@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    Minghao,
+    <br>My system can't handle multiple files submitted the way you did. The better way to do this is to submit ONE file that
+    has links to the files you are submitting. Also, you are supposed to do annotations for the milestones, where you tell
+    me what you did and give me links to your phps files and such. All of that would make it MUCH easier for me to grade
+    your assignment. You don't explain what you are doing and you are not using the technology in the way we are using it
+    in class. That is potentially fine, but you need to follow standards and you need to do things that actually do something.
+    What you have here pretends to let me set up an account and log in, but it doesn't really and then I can't do anything
+    anyway. Perhaps this will all come together in the final milestone, but I really don't see how. And I should be able
+    to see how at this point. You get 14/20 on this milestone.
+    <br>--Dr. Garvey
+    <br>Root Level:(Static php pages that are used to generate html pages)
+    <ul>
+        <li>
+            <a href="http://ice.truman.edu/~ms1723/+1s/index.phps">index.phps</a> is the main page. Its content is transfered to
+            <a href="http://ice.truman.edu/~ms1723/+1s/browse.phps">browse.phps</a>
+        </li>
+        <li>
+            <a href="http://ice.truman.edu/~ms1723/+1s/album.phps">album.phps</a> displays the album info.
+        </li>
+        <li>
+            <a href="http://ice.truman.edu/~ms1723/+1s/register.phps">register.phps</a> is responsible for registering and logging in.
+        </li>
+
+        <li>
+            Includes Folder:(Php codes that connects to db)
+            <ul>
+                <li>
+                    <a href="http://ice.truman.edu/~ms1723/+1s/includes/config.phps">config.phps</a> is responsible for connecting to the mysql server.
+                </li>
+                <li>
+                    <a href="http://ice.truman.edu/~ms1723/+1s/includes/footer.phps">footer.phps</a> is responsible for creating the player bar and other section for each page.
+                </li>
+                <li>
+                    <a href="http://ice.truman.edu/~ms1723/+1s/includes/header.phps">header.phps</a> is responsible for creating the left portion(Logo, Browse) for each page.
+                </li>
+                <li>
+                    <a href="http://ice.truman.edu/~ms1723/+1s/includes/includedFiles.phps">includedFiles.phps</a> is responsible for checking if the user typed the url or the Jquery triggered
+                    it.
+                </li>
+                <li>
+                    <a href="http://ice.truman.edu/~ms1723/+1s/includes/navBarContainer.phps">navBarContainer.phps</a> is responsible for display only the Logo section and browse button for every
+                    page.
+                </li>
+                <li>
+                    <a href="http://ice.truman.edu/~ms1723/+1s/includes/nowPlayingBar.phps">nowPlayingBar.phps</a> is responsible for display the player section for each page.
+                </li>
+                <li>
+                    Classes Folder:
+                    <ul>
+                        <li>
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/classes/Account.phps">Account.phps</a>,
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/classes/Album.phps">Album.phps</a>,
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/classes/Artist.phps">Artist.phps</a> and
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/classes/Song.phps">Song.phps</a> are used to obtain relevent data from database.
+                        </li>
+                        <li>
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/classes/Constant.phps">Constant.phps</a> is storing error messages for incorrent format in register page.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Handlers Folder:
+                    <ul>
+                        <li>
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/handlers/login-handler.phps">login-handler.phps</a> forward user to register page if they are not logged in.
+                        </li>
+                        <li>
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/handlers/register-handler.phps">register-handler.phps</a>
+                            <strong>cleans user input and thus increase security</strong>.
+                        </li>
+                        <li>
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/handlers/ajax/getAlbumJson.phps">getAlbumjson.phps</a>,
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/handlers/ajax/getArtistJson.phps">getArtistjson.phps</a> and
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/handlers/ajax/getSongJson.phps">getSongjson.phps</a> gets the data from database into the playlist via ajax.
+                            <a href="http://ice.truman.edu/~ms1723/+1s/includes/handlers/ajax/updatePlays.phps">updatePlays.phps</a> updates the song played times in database via ajax.
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+</html>

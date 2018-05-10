@@ -9,6 +9,7 @@ else {
 }
 //get album information
 $album = new Album($con,$albumId);
+// $album = new Album($db,$albumId);
 $artist = $album->getArtist();
 ?>
 
@@ -35,6 +36,7 @@ $artist = $album->getArtist();
         $trackNum = 1;
         foreach ($songIdArray as $songId) {
             $albumSong = new Song($con, $songId);
+            // $albumSong = new Song($db, $songId);
             $albumArtist = $albumSong->getArtist();
 
             echo "<li class='trackListRow'>

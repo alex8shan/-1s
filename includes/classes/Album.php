@@ -1,11 +1,12 @@
 <?php
     class Album {
-
+        // private $db;
         private $con;
         private $id;
         private $album;
 
         public function __construct($con, $id) {
+            // $this->con = $db;
             $this->con = $con;
             $this->id = $id;
 
