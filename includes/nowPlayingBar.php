@@ -71,7 +71,9 @@ $(document).ready(function() {
 		mouseDown = false;
 	});
 });
-
+/**
+ * Changes the song's play time when the progress bar changes (is dragged)
+ */
 function timeFromOffset(mouse, progressBar) {
 	var percentage = mouse.offsetX / $(progressBar).width() * 100;
 	var seconds = audioElement.audio.duration * (percentage / 100);
@@ -81,6 +83,7 @@ function timeFromOffset(mouse, progressBar) {
  * Switch to the previous song of playlist
  */
 function prevSong() {
+	//before the song has been played for 3 seconds
 	if(audioElement.audio.currentTime >= 3 || currentIndex == 0) {
 		audioElement.setTime(0);
 	}

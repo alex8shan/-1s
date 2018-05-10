@@ -24,17 +24,19 @@ function openPage(url) {
 	$("body").scrollTop(0);
 	history.pushState(null,null,url);
 }
-
+/**
+ * Format the time in the forms of 00:00
+ */
 function formatTime(seconds) {
 	var time = Math.round(seconds);
 	var minutes = Math.floor(time / 60); //Rounds down
 	var seconds = time - (minutes * 60);
-
 	var extraZero = (seconds < 10) ? "0" : "";
-
 	return minutes + ":" + extraZero + seconds;
 }
-
+/**
+ * Update the time progress bar of current song
+ */
 function updateTimeProgressBar(audio) {
 	$(".progressTime.current").text(formatTime(audio.currentTime));
 	$(".progressTime.remaining").text(formatTime(audio.duration - audio.currentTime));
@@ -42,13 +44,15 @@ function updateTimeProgressBar(audio) {
 	var progress = audio.currentTime / audio.duration * 100;
 	$(".playbackBar .progress").css("width", progress + "%");
 }
-
+/**
+ * Update the Volume Progress Bar
+ */
 function updateVolumeProgressBar(audio) {
 	var volume = audio.volume * 100;
 	$(".volumeBar .progress").css("width", volume + "%");
 }
 /**
- * Audio function
+ * Audio object
  */
 function Audio() {
 
@@ -73,7 +77,7 @@ function Audio() {
 	this.audio.addEventListener("volumechange", function() {
 		updateVolumeProgressBar(this);
 	});
-
+	//
 	this.setTrack = function(track) {
 		this.currentlyPlaying = track;
 		this.audio.src = track.path;
