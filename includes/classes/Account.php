@@ -13,16 +13,6 @@
             $this->errorArray = array();
         }
 
-            // $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'"
-            // $stmt = $db->prepare($sql);
-            // $stmt->execute();
-            // if($db->query('SELECT count(*) FROM users')-fetchColumn() == 1) {
-            //     return true;
-            // }
-            // else {
-            //     array_push($this->errorArray, Constants::$loginFailed);
-            //     return false;
-            // }
         public function login($username, $password) {
             $password = md5($password);
             $query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$username' AND password='$password'");
